@@ -1,0 +1,102 @@
+<div class="headerPart">
+  <h1 class="txt-center">Game Of Thrones </h1>
+  <h3 class="txt-center">Search for battles according to locations and get info </h3>
+</div>
+<div class="mainBody">
+  <div class="searchBarPart">
+    <form class="example-form">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Battle Location</mat-label>
+        <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl"
+          [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of autoList" [value]="option" (click)="loadRequiredInfo(option)">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+  </div>
+  <div class="displayInfoPart">
+    <div class="preText" *ngIf="!chosenList">
+      Battle details will appear here.
+    </div>
+    <mat-card class="battleCard" *ngFor="let battle of chosenList">
+      <mat-card-header>
+        <mat-card-title>{{battle.name}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content id="cardContents">
+        <table>
+          <tr class="entity_value">
+            <td class="entity">Year: </td>
+            <td class="value">{{battle.year}}</td>
+          </tr>
+          <tr class="entity_value">
+            <td class="entity">Battle Number: </td>
+            <td class="value">{{battle.battle_number}}</td>
+          </tr>
+          <tr class="entity_value">
+            <td class="entity">Attacker King: </td>
+            <td class="value">{{battle.attacker_king}}</td>
+          </tr>
+          <tr class="entity_value">
+            <td class="entity">Defender King: </td>
+            <td class="value">{{battle.defender_king}}</td>
+          </tr>
+          <tr class="entity_value">
+            <td class="entity">Attacker: </td>
+            <td class="value">{{battle.attacker_1}}</td>
+          </tr>
+          <tr class="entity_value">
+            <td class="entity">Defender: </td>
+            <td class="value">{{battle.defender_1}}</td>
+          </tr>
+          <tr class="entity_value">
+            <td class="entity">Attacker Outcome: </td>
+            <td class="value">{{battle.attacker_outcome}}</td>
+          </tr>
+          <tr class="entity_value">
+            <td class="entity">Battle Type: </td>
+            <td class="value">{{battle.battle_type}}</td>
+          </tr>
+          <tr class="entity_value">
+            <td class="entity">Major Death: </td>
+            <td class="value">{{battle.major_death}}</td>
+          </tr>
+          <tr class="entity_value">
+            <td class="entity">Major Capture: </td>
+            <td class="value">{{battle.major_capture}}</td>
+          </tr>
+          <tr class="entity_value">
+            <td class="entity">Attacker Size: </td>
+            <td class="value">{{battle.attacker_size}}</td>
+          </tr>
+          <tr class="entity_value">
+            <td class="entity">Defender Size: </td>
+            <td class="value">{{battle.defender_size}}</td>
+          </tr>
+          <tr class="entity_value">
+            <td class="entity">Attacking Commander: </td>
+            <td class="value">{{battle.attacker_commander}}</td>
+          </tr>
+          <tr class="entity_value">
+            <td class="entity">Defending Commander: </td>
+            <td class="value">{{battle.defender_commander}}</td>
+          </tr>
+          <tr class="entity_value">
+            <td class="entity">Summer: </td>
+            <td class="value">{{battle.summer}}</td>
+          </tr>
+          <tr class="entity_value">
+            <td class="entity">Location: </td>
+            <td class="value">{{battle.location}}</td>
+          </tr>
+          <tr class="entity_value">
+            <td class="entity">Region: </td>
+            <td class="value">{{battle.region}}</td>
+          </tr>
+        </table>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
